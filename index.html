@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY SANITY - Rockerboy</title>
+    <style>
+        /* Base Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2em;
+            padding: 20px;
+            color: #fff;
+            margin: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Gallery Styling */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 60px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #000;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+            filter: grayscale(100%);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        /* Lightbox Styling */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border: 2px solid #fff;
+        }
+
+        /* Music Controls Styling */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        #play-music-btn {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #play-music-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #volume-slider, #timeline-slider {
+            -webkit-appearance: none;
+            width: 150px;
+            height: 5px;
+            background: #666;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #volume-slider::-webkit-slider-thumb, #timeline-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #volume-slider::-moz-range-thumb, #timeline-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">MY SANITY - Rockerboy</div>
+
+    <div class="gallery">
+        <!-- Gallery items -->
+        <div class="gallery-item">
+            <img src="images/image1.png" alt="Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image2.png" alt="Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image3.png" alt="Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image4.png" alt="Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image5.png" alt="Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image6.png" alt="Image 6">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image7.png" alt="Image 7">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image8.png" alt="Image 8">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image9.png" alt="Image 9">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image10.png" alt="Image 10">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image11.png" alt="Image 11">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image12.png" alt="Image 12">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image13.png" alt="Image 13">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image14.png" alt="Image 14">
+        </div>
+        <div class="gallery-item">
+            <img src="images/image15.png" alt="Image 15">
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-image" src="" alt="Lightbox Image">
+    </div>
+
+    <div class="music-controls">
+        <button id="play-music-btn">Play Music</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        <input type="range" id="timeline-slider" min="0" max="100" step="1" value="0">
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
